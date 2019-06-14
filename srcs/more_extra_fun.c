@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   more_extra_fun.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmahjoub <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/05 22:21:17 by rmahjoub          #+#    #+#             */
-/*   Updated: 2018/10/12 20:41:29 by rmahjoub         ###   ########.fr       */
+/*   Created: 2019/06/13 14:33:51 by rmahjoub          #+#    #+#             */
+/*   Updated: 2019/06/13 16:21:11 by rmahjoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/printf.h"
 
-char	*ft_strdup(const char *s1)
+int		cond(int condition, int tru, int flse)
 {
-	size_t	len;
-	size_t	i;
-	char	*dup;
+	if (condition)
+		return (tru);
+	else
+		return (flse);
+	return (0);
+}
 
-	i = 0;
-	len = ft_strlen(s1);
-	dup = (char*)malloc(sizeof(char) * (len + 1));
-	if (!dup)
-		return (NULL);
-	while (i < len)
-	{
-		dup[i] = s1[i];
-		i++;
-	}
-	dup[len] = '\0';
-	return (dup);
+void	rm_uzeros_charsum(char **str, char **str1, char **str2)
+{
+	rm_uzeros(str);
+	ft_memdel((void**)str1);
+	ft_memdel((void**)str2);
 }

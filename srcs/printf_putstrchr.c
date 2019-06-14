@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   printf_putstrchr.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmahjoub <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/05 22:21:17 by rmahjoub          #+#    #+#             */
-/*   Updated: 2018/10/12 20:41:29 by rmahjoub         ###   ########.fr       */
+/*   Created: 2019/06/11 17:06:06 by rmahjoub          #+#    #+#             */
+/*   Updated: 2019/06/11 17:06:48 by rmahjoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/printf.h"
 
-char	*ft_strdup(const char *s1)
+void	printf_putchar(char c, int *printed)
 {
-	size_t	len;
-	size_t	i;
-	char	*dup;
+	*printed = *printed + 1;
+	write(1, &c, 1);
+}
 
+void	printf_putstr(char const *s, int *printed)
+{
+	unsigned int i;
+
+	if (s == NULL)
+		return ;
 	i = 0;
-	len = ft_strlen(s1);
-	dup = (char*)malloc(sizeof(char) * (len + 1));
-	if (!dup)
-		return (NULL);
-	while (i < len)
-	{
-		dup[i] = s1[i];
-		i++;
-	}
-	dup[len] = '\0';
-	return (dup);
+	while (s[i] != '\0')
+		printf_putchar(s[i++], printed);
 }

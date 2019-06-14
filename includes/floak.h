@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   float.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmahjoub <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/05 22:21:17 by rmahjoub          #+#    #+#             */
-/*   Updated: 2018/10/12 20:41:29 by rmahjoub         ###   ########.fr       */
+/*   Created: 2019/04/11 14:04:53 by rmahjoub          #+#    #+#             */
+/*   Updated: 2019/06/13 17:38:18 by rmahjoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef FLOAK_H
+# define FLOAK_H
+# include "printf.h"
 
-char	*ft_strdup(const char *s1)
+typedef union					u_floaki
 {
-	size_t	len;
-	size_t	i;
-	char	*dup;
-
-	i = 0;
-	len = ft_strlen(s1);
-	dup = (char*)malloc(sizeof(char) * (len + 1));
-	if (!dup)
-		return (NULL);
-	while (i < len)
+	long double					f;
+	struct
 	{
-		dup[i] = s1[i];
-		i++;
-	}
-	dup[len] = '\0';
-	return (dup);
-}
+		unsigned long long int	mantisa : 63;
+		unsigned int			intgprt : 1;
+		unsigned int			exponent : 15;
+		unsigned int			sign : 1;
+	}							parts;
+}								t_floaki;
+
+#endif

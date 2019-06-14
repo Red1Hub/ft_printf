@@ -1,33 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   printf_file.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmahjoub <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/05 22:21:17 by rmahjoub          #+#    #+#             */
-/*   Updated: 2018/10/12 20:41:29 by rmahjoub         ###   ########.fr       */
+/*   Created: 2019/06/13 21:35:02 by rmahjoub          #+#    #+#             */
+/*   Updated: 2019/06/13 23:09:35 by rmahjoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef PFFILES_H
+# define PFFILES_H
+# include "printf.h"
+# include <sys/types.h>
+# include <sys/uio.h>
+# include <fcntl.h>
+# include <unistd.h>
 
-char	*ft_strdup(const char *s1)
-{
-	size_t	len;
-	size_t	i;
-	char	*dup;
-
-	i = 0;
-	len = ft_strlen(s1);
-	dup = (char*)malloc(sizeof(char) * (len + 1));
-	if (!dup)
-		return (NULL);
-	while (i < len)
-	{
-		dup[i] = s1[i];
-		i++;
-	}
-	dup[len] = '\0';
-	return (dup);
-}
+#endif

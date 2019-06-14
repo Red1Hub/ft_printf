@@ -1,33 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   insert_flgminuszeroprintt.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmahjoub <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/05 22:21:17 by rmahjoub          #+#    #+#             */
-/*   Updated: 2018/10/12 20:41:29 by rmahjoub         ###   ########.fr       */
+/*   Created: 2019/06/11 16:43:22 by rmahjoub          #+#    #+#             */
+/*   Updated: 2019/06/11 16:44:43 by rmahjoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/printf.h"
 
-char	*ft_strdup(const char *s1)
+void	insert_minus(t_printfv *printfv, char *tmp)
 {
-	size_t	len;
-	size_t	i;
-	char	*dup;
-
-	i = 0;
-	len = ft_strlen(s1);
-	dup = (char*)malloc(sizeof(char) * (len + 1));
-	if (!dup)
-		return (NULL);
-	while (i < len)
-	{
-		dup[i] = s1[i];
-		i++;
-	}
-	dup[len] = '\0';
-	return (dup);
+	if ((printfv->percent).plus || (printfv->percent).charg[0] != '+' ||
+			strchrchr("cs", "\0", printfv->percent.specifier))
+		printf_putstr(printfv->percent.charg, &(printfv->printed));
+	else
+		printf_putstr(printfv->percent.charg + 1, &(printfv->printed));
+	printf_putstr(tmp, &(printfv->printed));
 }
